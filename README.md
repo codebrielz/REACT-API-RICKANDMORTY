@@ -1,70 +1,8 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# ¿QUÉ ES REDUX?
+* És un contenedor predecible del estado de nuestra aplicación (és una forma de controlar donde se encuentra la informacion en todo momento y tambien ayuda que la modificación de la información sea en una sola vía de manera prevesible, con el objetivo de prevenir cambios accidentales en la misma)
+* Redux no es propio de React, son dos cosas totalmente independiente. (se puede utilizar en angular, react, vue, flutter...)
+* Store, el Store en Redux es conocida como la fuente única de la verdad, esto quiere decir, que ahí se encuentra la información que mis componentes van a consumir.
+# EXPLICACIÓN BREVE SOBRE EL REDUCER
+* Reducer, nuestro reducer es una funcion pura que maneja un estado, el estado le sirve la información a la pagina para que muestre la información deseada, pero la pagina no modifica el estado directamente, solo lo lee. Cúando se necesita hacer una modificación al estado, entonces la pagina va a generar una acción, esa acción será enviada al Reducer
+# EXPLICACIÓN SOBRE EL STORE
+* Redux, siempre vamos a tener un state, que va a ser proveido no por el Reducer, va a ser proveido por el store, ese state cumple la misma función que el state de Reducer, la pagina necesita información, la obtiene del state del store. Cúando se necesita hacer una modificación o hacer algúna accion, se crea un action, ese action no va a ser enviado directamente al store, si no que cae en un dispatcher, el dispatcher recibe dicha acción, lo abre y analiza y lo enviará a un Reducer especial, ese Reducer es una combinación de todos los Reducers que va a tener mi aplicación, por ejemplo, un reducer para manejar la aplicación, el reducer de las tareas pendientes, el reducer de mis entradas del diario...Ese reducer simplemente contiene una multitud de reducers pequeños, en los cuales el dispatcher va a buscar el reducer que sea cualificado para realizar dicha action y genera un nuevo state, ese state notifica a la vista. Todo lo dicho es para hacer un proceso síncrono, no para procesos asyncronos, como peticiones http, esperar la respuesta.... En el caso de necesitar una action asyncrona, como una autenticacion, tenemos que esperar la información de la autenticación, entonces si disparamos esa action, esa action va a caer en el dispatch, verá que es una accion asyncrona, por ende, necesitara un middleware, este middleware ejecutará la tarea asyncrona, ejecutará la accion, llamará al API, traerá los datos, va a esperar la respuesta, y cuando tenga la respuesta ese API lo notificará a nuestro middleware, ese middleware está dentro del dispatcher, por lo cual se lo va a mandar a nuestro reducer principal y el reducer principal buscará el reducer para crear el nuevo state.
